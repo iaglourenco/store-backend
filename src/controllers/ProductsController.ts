@@ -9,6 +9,7 @@ export default {
   async index(req: Request, res: Response) {
     const productsRepository = getRepository(Product);
     const products = await productsRepository.find();
+    res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
     return res.json(productView.renderMany(products));
   },
 
@@ -16,6 +17,8 @@ export default {
     const { id } = req.params;
     const productsRepository = getRepository(Product);
     const product = await productsRepository.findOneOrFail(id);
+    res.setHeader("Cache-Control", "s-maxage=10, stale-while-revalidate");
+
     return res.json(productView.render(product));
   },
 

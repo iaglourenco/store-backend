@@ -10,6 +10,6 @@ app.use(express.json());
 app.use(routes);
 app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 app.use(errorHandler);
-app.listen(80, () => {
-  console.log("Server started on port 80");
+app.listen(process.env.PORT, () => {
+  console.log("Server started on port", process.env.PORT);
 });

@@ -11,7 +11,6 @@ export default {
       category: product.category,
       brand: product.brand,
       stock: product.stock,
-      rating: product.rating,
       reviews: product.reviews,
       images: imagesView.renderMany(product.images),
     };

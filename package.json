@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -18,7 +18,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-    "start": "cd dist && node server.js",
+    "start": "node dist/server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {

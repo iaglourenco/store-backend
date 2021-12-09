@@ -4,7 +4,7 @@ export default {
   render(image: Image) {
     return {
       id: image.id,
-      url: `${process.env.VERCEL_URL}/uploads/${image.path}`,
+      url: `${process.env.HOSTNAME}/uploads/${image.path}`,
     };
   },
 

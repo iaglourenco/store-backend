@@ -15,6 +15,9 @@ routes.post("/users", upload.array("images"), UsersController.create);
 routes.get("/users", authMiddleware, UsersController.index);
 routes.get("/users/:id", authMiddleware, UsersController.show);
 
+routes.get("/", (req, res) => {
+  res.json({ message: "Hello World" });
+});
 routes.post("/products", upload.array("images"), ProductsController.create);
 routes.get("/products", ProductsController.index);
 routes.get("/products/:id", ProductsController.show);

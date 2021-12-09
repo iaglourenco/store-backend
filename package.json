@@ -16,8 +16,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files && cd dist && node server.js",
-    "start": "npm run build && node dist/server.js",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files && cd dist",
+    "start": "npm run build && cd dist && node server.js",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {

@@ -65,4 +65,27 @@ export default {
     await productsRepository.save(product);
     return res.status(201).json(productsView.render(product));
   },
+
+  async remove(req: Request, res: Response) {
+    const { id } = req.params;
+    const productsRepository = getRepository(Product);
+    const product = await productsRepository.findOneOrFail(id);
+    await productsRepository.remove(product);
+  },
+
+  async edit(req: Request, res: Response) {
+    const { id } = req.params;
+    const { name, description, price, category, brand, stock } = req.body;
+
+    const productsRepository = getRepository(Product);
+    const product = await productsRepository.findOneOrFail(id);
+
+    product.name = name;
+    product.description = description;
+    product.price = price;
+    product.category = category;
+    product.brand = brand;
+    product.stock = stock;
+    await productsRepository.save(product);
+  },
 };

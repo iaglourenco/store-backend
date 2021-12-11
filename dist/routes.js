@@ -32,7 +32,7 @@ routes.get("/users", _authMiddleware.default, _UsersControllers.default.index);
 routes.get("/users/:id", _authMiddleware.default, _UsersControllers.default.show);
 routes.get("/", (req, res) => {
   res.json({
-    message: "Hello World"
+    message: "TopicoStore API v1"
   });
 });
 routes.post("/products", upload.array("images"), _ProductsController.default.create);

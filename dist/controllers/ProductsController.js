@@ -82,6 +82,38 @@ var _default = {
     const product = productsRepository.create(data);
     await productsRepository.save(product);
     return res.status(201).json(_products_view.default.render(product));
+  },
+
+  async remove(req, res) {
+    const {
+      id
+    } = req.params;
+    const productsRepository = (0, _typeorm.getRepository)(_Product.default);
+    const product = await productsRepository.findOneOrFail(id);
+    await productsRepository.remove(product);
+  },
+
+  async edit(req, res) {
+    const {
+      id
+    } = req.params;
+    const {
+      name,
+      description,
+      price,
+      category,
+      brand,
+      stock
+    } = req.body;
+    const productsRepository = (0, _typeorm.getRepository)(_Product.default);
+    const product = await productsRepository.findOneOrFail(id);
+    product.name = name;
+    product.description = description;
+    product.price = price;
+    product.category = category;
+    product.brand = brand;
+    product.stock = stock;
+    await productsRepository.save(product);
   }
 
 };

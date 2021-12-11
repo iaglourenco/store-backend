@@ -25,9 +25,13 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let Product = (_dec = (0, _typeorm.Entity)("products"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", Number), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", String), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", String), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", Number), _dec16 = (0, _typeorm.OneToMany)(() => _Review.default, review => review.product), _dec17 = (0, _typeorm.JoinColumn)({
+let Product = (_dec = (0, _typeorm.Entity)("products"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", Number), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", String), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", String), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", Number), _dec16 = (0, _typeorm.OneToMany)(() => _Review.default, review => review.product, {
+  eager: true
+}), _dec17 = (0, _typeorm.JoinColumn)({
   name: "product_id"
-}), _dec18 = Reflect.metadata("design:type", Array), _dec19 = (0, _typeorm.OneToMany)(() => _Image.default, image => image.product), _dec20 = (0, _typeorm.JoinColumn)({
+}), _dec18 = Reflect.metadata("design:type", Array), _dec19 = (0, _typeorm.OneToMany)(() => _Image.default, image => image.product, {
+  eager: true
+}), _dec20 = (0, _typeorm.JoinColumn)({
   name: "product_id"
 }), _dec21 = Reflect.metadata("design:type", Array), _dec22 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.products), _dec23 = (0, _typeorm.JoinColumn)({
   name: "user_id"

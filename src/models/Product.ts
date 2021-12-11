@@ -36,11 +36,15 @@ export default class Product {
   @Column()
   stock: number;
 
-  @OneToMany(() => Review, (review) => review.product)
+  @OneToMany(() => Review, (review) => review.product, {
+    eager: true,
+  })
   @JoinColumn({ name: "product_id" })
   reviews: Review[];
 
-  @OneToMany(() => Image, (image) => image.product)
+  @OneToMany(() => Image, (image) => image.product, {
+    eager: true,
+  })
   @JoinColumn({ name: "product_id" })
   images: Image[];
 

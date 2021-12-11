@@ -36,6 +36,12 @@ var _default = {
       user
     } = req.body;
     const products = req.body.products;
+    const {
+      shipAddress,
+      paymentMethod,
+      shipmentPrice,
+      taxPrice
+    } = req.body;
     const buyHistoryRepository = (0, _typeorm.getRepository)(_BuyRecord.default);
     const orderData = {
       user,
@@ -68,6 +74,9 @@ var _default = {
       total: saleTotal,
       status: "PENDING",
       enviado: false,
+      shipAddress,
+      paymentMethod,
+      shipmentPrice,
       user,
       products: orderProducts
     });

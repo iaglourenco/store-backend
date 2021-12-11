@@ -32,6 +32,18 @@ class createBuyHistory1638919668447 {
       }, {
         name: "user_id",
         type: "uuid"
+      }, {
+        name: "shipAddress",
+        type: "varchar"
+      }, {
+        name: "paymentMethod",
+        type: "varchar"
+      }, {
+        name: "shipmentPrice",
+        type: "decimal"
+      }, {
+        name: "taxPrice",
+        type: "decimal"
       }],
       foreignKeys: [{
         columnNames: ["user_id"],

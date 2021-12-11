@@ -71,6 +71,8 @@ export default {
     const productsRepository = getRepository(Product);
     const product = await productsRepository.findOneOrFail(id);
     await productsRepository.remove(product);
+
+    res.status(204).json(product);
   },
 
   async edit(req: Request, res: Response) {
@@ -87,5 +89,7 @@ export default {
     product.brand = brand;
     product.stock = stock;
     await productsRepository.save(product);
+
+    res.status(200).json(productsView.render(product));
   },
 };

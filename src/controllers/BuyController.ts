@@ -20,7 +20,7 @@ export default {
   async create(req: Request, res: Response) {
     const { user } = req.body;
     const products = req.body.products as Order[];
-
+    const { shipAddress, paymentMethod, shipmentPrice, taxPrice } = req.body;
     const buyHistoryRepository = getRepository(BuyRecord);
 
     const orderData = {
@@ -63,6 +63,9 @@ export default {
       total: saleTotal,
       status: "PENDING",
       enviado: false,
+      shipAddress,
+      paymentMethod,
+      shipmentPrice,
       user,
       products: orderProducts,
     });

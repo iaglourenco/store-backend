@@ -15,6 +15,8 @@ routes.post("/users", upload.array("images"), UsersController.create);
 routes.get("/users", authMiddleware, UsersController.index);
 routes.get("/users/:id", authMiddleware, UsersController.show);
 
+routes.put("/products/:id", authMiddleware, ProductsController.edit);
+routes.delete("/users/:id", authMiddleware, UsersController.remove);
 routes.get("/", (req, res) => {
   res.json({ message: "TopicoStore API v1" });
 });
@@ -23,7 +25,6 @@ routes.get("/products", ProductsController.index);
 routes.get("/products/:id", ProductsController.show);
 
 // Buy products
-//
 routes.post("/buy", authMiddleware, BuyController.create);
 routes.get("/buy", authMiddleware, BuyController.index);
 

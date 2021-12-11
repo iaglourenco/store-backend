@@ -2,7 +2,6 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToMany,
   ManyToOne,
   OneToMany,
@@ -38,12 +37,14 @@ export default class Product {
 
   @OneToMany(() => Review, (review) => review.product, {
     eager: true,
+    cascade: true,
   })
   @JoinColumn({ name: "product_id" })
   reviews: Review[];
 
   @OneToMany(() => Image, (image) => image.product, {
     eager: true,
+    cascade: true,
   })
   @JoinColumn({ name: "product_id" })
   images: Image[];

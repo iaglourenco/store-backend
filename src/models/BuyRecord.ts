@@ -27,6 +27,18 @@ export default class BuyRecord {
   @Column()
   enviado: boolean;
 
+  @Column()
+  shipAddress: string;
+
+  @Column()
+  shipmentPrice: number;
+
+  @Column()
+  taxPrice: number;
+
+  @Column()
+  paymentMethod: string;
+
   @ManyToOne(() => User, (user) => user.buyRecords)
   @JoinColumn({ name: "user_id" })
   user: User;

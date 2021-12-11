@@ -91,6 +91,7 @@ var _default = {
     const productsRepository = (0, _typeorm.getRepository)(_Product.default);
     const product = await productsRepository.findOneOrFail(id);
     await productsRepository.remove(product);
+    res.status(204).json(product);
   },
 
   async edit(req, res) {
@@ -114,6 +115,7 @@ var _default = {
     product.brand = brand;
     product.stock = stock;
     await productsRepository.save(product);
+    res.status(200).json(_products_view.default.render(product));
   }
 
 };

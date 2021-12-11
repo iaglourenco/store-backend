@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _express = require("express");
+
 var _typeorm = require("typeorm");
 
 var _User = _interopRequireDefault(require("../models/User"));
@@ -72,6 +74,8 @@ var _default = {
     const usersRepository = (0, _typeorm.getRepository)(_User.default);
     const user = await usersRepository.findOneOrFail(id);
     await usersRepository.remove(user);
+
+    _express.response.status(204).json(user);
   }
 
 };

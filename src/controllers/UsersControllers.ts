@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import { getRepository } from "typeorm";
 import User from "../models/User";
 import usersView from "../views/users_view";
@@ -52,5 +52,7 @@ export default {
     const usersRepository = getRepository(User);
     const user = await usersRepository.findOneOrFail(id);
     await usersRepository.remove(user);
+
+    response.status(204).json(user);
   },
 };

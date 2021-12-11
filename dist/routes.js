@@ -30,6 +30,8 @@ const upload = (0, _multer.default)(_upload.default);
 routes.post("/users", upload.array("images"), _UsersControllers.default.create);
 routes.get("/users", _authMiddleware.default, _UsersControllers.default.index);
 routes.get("/users/:id", _authMiddleware.default, _UsersControllers.default.show);
+routes.put("/products/:id", _authMiddleware.default, _ProductsController.default.edit);
+routes.delete("/users/:id", _authMiddleware.default, _UsersControllers.default.remove);
 routes.get("/", (req, res) => {
   res.json({
     message: "TopicoStore API v1"
@@ -38,7 +40,6 @@ routes.get("/", (req, res) => {
 routes.post("/products", upload.array("images"), _ProductsController.default.create);
 routes.get("/products", _ProductsController.default.index);
 routes.get("/products/:id", _ProductsController.default.show); // Buy products
-//
 
 routes.post("/buy", _authMiddleware.default, _BuyController.default.create);
 routes.get("/buy", _authMiddleware.default, _BuyController.default.index); // Review a product

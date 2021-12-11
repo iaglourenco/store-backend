@@ -11,7 +11,7 @@ var _Product = _interopRequireDefault(require("./Product"));
 
 var _User = _interopRequireDefault(require("./User"));
 
-var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _dec15, _dec16, _dec17, _dec18, _dec19, _dec20, _dec21, _dec22, _dec23, _dec24, _dec25, _class, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21,11 +21,11 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", Number), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", Boolean), _dec12 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.buyRecords), _dec13 = (0, _typeorm.JoinColumn)({
+let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", Number), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", Boolean), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", String), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", Number), _dec16 = (0, _typeorm.Column)(), _dec17 = Reflect.metadata("design:type", Number), _dec18 = (0, _typeorm.Column)(), _dec19 = Reflect.metadata("design:type", String), _dec20 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.buyRecords), _dec21 = (0, _typeorm.JoinColumn)({
   name: "user_id"
-}), _dec14 = Reflect.metadata("design:type", typeof _User.default === "undefined" ? Object : _User.default), _dec15 = (0, _typeorm.ManyToMany)(() => _Product.default, {
+}), _dec22 = Reflect.metadata("design:type", typeof _User.default === "undefined" ? Object : _User.default), _dec23 = (0, _typeorm.ManyToMany)(() => _Product.default, {
   eager: true
-}), _dec16 = (0, _typeorm.JoinTable)(), _dec17 = Reflect.metadata("design:type", Array), _dec(_class = (_class2 = class BuyRecord {
+}), _dec24 = (0, _typeorm.JoinTable)(), _dec25 = Reflect.metadata("design:type", Array), _dec(_class = (_class2 = class BuyRecord {
   constructor() {
     _initializerDefineProperty(this, "id", _descriptor, this);
 
@@ -37,9 +37,17 @@ let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeor
 
     _initializerDefineProperty(this, "enviado", _descriptor5, this);
 
-    _initializerDefineProperty(this, "user", _descriptor6, this);
+    _initializerDefineProperty(this, "shipAddress", _descriptor6, this);
 
-    _initializerDefineProperty(this, "products", _descriptor7, this);
+    _initializerDefineProperty(this, "shipmentPrice", _descriptor7, this);
+
+    _initializerDefineProperty(this, "taxPrice", _descriptor8, this);
+
+    _initializerDefineProperty(this, "paymentMethod", _descriptor9, this);
+
+    _initializerDefineProperty(this, "user", _descriptor10, this);
+
+    _initializerDefineProperty(this, "products", _descriptor11, this);
   }
 
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "id", [_dec2, _dec3], {
@@ -67,12 +75,32 @@ let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeor
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "user", [_dec12, _dec13, _dec14], {
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, "shipAddress", [_dec12, _dec13], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "products", [_dec15, _dec16, _dec17], {
+}), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, "shipmentPrice", [_dec14, _dec15], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, "taxPrice", [_dec16, _dec17], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, "paymentMethod", [_dec18, _dec19], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, "user", [_dec20, _dec21, _dec22], {
+  configurable: true,
+  enumerable: true,
+  writable: true,
+  initializer: null
+}), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, "products", [_dec23, _dec24, _dec25], {
   configurable: true,
   enumerable: true,
   writable: true,

@@ -31,10 +31,10 @@ export default class User {
   }
 
   @Column()
-  first_name: string;
+  name: string;
 
   @Column()
-  last_name: string;
+  isAdmin: boolean;
 
   @OneToMany(() => BuyRecord, (buyRecord) => buyRecord.user, {
     eager: true,
@@ -42,9 +42,7 @@ export default class User {
   @JoinColumn({ name: "user_id" })
   buyRecords: BuyRecord[];
 
-  @OneToMany(() => Review, (review) => review.user, {
-    eager: true,
-  })
+  @OneToMany(() => Review, (review) => review.user)
   @JoinColumn({ name: "user_id" })
   reviews: Review[];
 

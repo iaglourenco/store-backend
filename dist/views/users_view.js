@@ -8,9 +8,12 @@ var _default = {
   render(user) {
     return {
       id: user.id,
-      firstName: user.first_name,
-      lastName: user.last_name,
-      email: user.email
+      name: user.name,
+      email: user.email,
+      createdProducts: user.products,
+      history: user.buyRecords,
+      reviews: user.reviews,
+      isAdmin: user.isAdmin
     };
   },
 

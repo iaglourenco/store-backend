@@ -8,6 +8,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import BuyRecord from "./BuyRecord";
 import Image from "./Image";
 import Review from "./Review";
 import User from "./User";
@@ -35,23 +36,18 @@ export default class Product {
   @Column()
   stock: number;
 
-  @OneToMany(() => Review, (review) => review.product, {
-    cascade: ["insert", "update"],
-    eager: true,
-  })
+  @OneToMany(() => Review, (review) => review.product)
   @JoinColumn({ name: "product_id" })
   reviews: Review[];
 
-  @OneToMany(() => Image, (image) => image.product, {
-    cascade: ["insert", "update"],
-    eager: true,
-  })
+  @OneToMany(() => Image, (image) => image.product)
   @JoinColumn({ name: "product_id" })
   images: Image[];
 
-  @ManyToOne(() => User, (user) => user.products, {
-    cascade: ["insert", "update"],
-  })
+  @ManyToOne(() => User, (user) => user.products)
   @JoinColumn({ name: "user_id" })
   user: User;
+
+  @ManyToMany(() => BuyRecord)
+  history: BuyRecord[];
 }

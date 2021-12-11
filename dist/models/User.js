@@ -29,13 +29,11 @@ let User = (_dec = (0, _typeorm.Entity)("users"), _dec2 = (0, _typeorm.PrimaryGe
   name: "id"
 }), _dec3 = Reflect.metadata("design:type", String), _dec4 = (0, _typeorm.Column)({
   unique: true
-}), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.BeforeInsert)(), _dec9 = (0, _typeorm.BeforeUpdate)(), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", String), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", String), _dec16 = (0, _typeorm.OneToMany)(() => _BuyRecord.default, buyRecord => buyRecord.user, {
+}), _dec5 = Reflect.metadata("design:type", String), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.BeforeInsert)(), _dec9 = (0, _typeorm.BeforeUpdate)(), _dec10 = Reflect.metadata("design:type", Function), _dec11 = Reflect.metadata("design:paramtypes", []), _dec12 = (0, _typeorm.Column)(), _dec13 = Reflect.metadata("design:type", String), _dec14 = (0, _typeorm.Column)(), _dec15 = Reflect.metadata("design:type", Boolean), _dec16 = (0, _typeorm.OneToMany)(() => _BuyRecord.default, buyRecord => buyRecord.user, {
   eager: true
 }), _dec17 = (0, _typeorm.JoinColumn)({
   name: "user_id"
-}), _dec18 = Reflect.metadata("design:type", Array), _dec19 = (0, _typeorm.OneToMany)(() => _Review.default, review => review.user, {
-  eager: true
-}), _dec20 = (0, _typeorm.JoinColumn)({
+}), _dec18 = Reflect.metadata("design:type", Array), _dec19 = (0, _typeorm.OneToMany)(() => _Review.default, review => review.user), _dec20 = (0, _typeorm.JoinColumn)({
   name: "user_id"
 }), _dec21 = Reflect.metadata("design:type", Array), _dec22 = (0, _typeorm.OneToMany)(() => _Product.default, product => product.user, {
   eager: true
@@ -49,9 +47,9 @@ let User = (_dec = (0, _typeorm.Entity)("users"), _dec2 = (0, _typeorm.PrimaryGe
 
     _initializerDefineProperty(this, "password", _descriptor3, this);
 
-    _initializerDefineProperty(this, "first_name", _descriptor4, this);
+    _initializerDefineProperty(this, "name", _descriptor4, this);
 
-    _initializerDefineProperty(this, "last_name", _descriptor5, this);
+    _initializerDefineProperty(this, "isAdmin", _descriptor5, this);
 
     _initializerDefineProperty(this, "buyRecords", _descriptor6, this);
 
@@ -79,12 +77,12 @@ let User = (_dec = (0, _typeorm.Entity)("users"), _dec2 = (0, _typeorm.PrimaryGe
   enumerable: true,
   writable: true,
   initializer: null
-}), _applyDecoratedDescriptor(_class2.prototype, "hashPassword", [_dec8, _dec9, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "hashPassword"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "first_name", [_dec12, _dec13], {
+}), _applyDecoratedDescriptor(_class2.prototype, "hashPassword", [_dec8, _dec9, _dec10, _dec11], Object.getOwnPropertyDescriptor(_class2.prototype, "hashPassword"), _class2.prototype), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, "name", [_dec12, _dec13], {
   configurable: true,
   enumerable: true,
   writable: true,
   initializer: null
-}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "last_name", [_dec14, _dec15], {
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, "isAdmin", [_dec14, _dec15], {
   configurable: true,
   enumerable: true,
   writable: true,

@@ -19,15 +19,11 @@ export default class Review {
   @Column()
   opinion: string;
 
-  @ManyToOne(() => User, (user) => user.reviews, {
-    cascade: true,
-  })
+  @ManyToOne(() => User, (user) => user.reviews)
   @JoinColumn({ name: "user_id" })
   user: User;
 
-  @ManyToOne(() => Product, (product) => product.reviews, {
-    cascade: true,
-  })
+  @ManyToOne(() => Product, (product) => product.reviews)
   @JoinColumn({ name: "product_id" })
   product: Product;
 }

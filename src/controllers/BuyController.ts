@@ -13,9 +13,7 @@ export default {
   async index(req: Request, res: Response) {
     const { user } = req.body;
     const buyHistoryRepository = getRepository(BuyRecord);
-    const a = await buyHistoryRepository.find({
-      relations: ["products"],
-    });
+    const a = await buyHistoryRepository.find();
     return res.json(a);
   },
 
@@ -23,7 +21,6 @@ export default {
     const { user } = req.body;
     const products = req.body.products as Order[];
 
-    const productsRepository = getRepository(Product);
     const buyHistoryRepository = getRepository(BuyRecord);
 
     const orderData = {

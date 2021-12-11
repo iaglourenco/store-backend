@@ -1,13 +1,16 @@
 import User from "../models/User";
-import imagesView from "./images_view";
+import buy_view from "./buy_view";
 
 export default {
   render(user: User) {
     return {
       id: user.id,
-      firstName: user.first_name,
-      lastName: user.last_name,
+      name: user.name,
       email: user.email,
+      createdProducts: user.products,
+      history: user.buyRecords,
+      reviews: user.reviews,
+      isAdmin: user.isAdmin,
     };
   },
 

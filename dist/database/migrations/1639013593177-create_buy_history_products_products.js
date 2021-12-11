@@ -21,11 +21,15 @@ class createBuyHistoryProductsProducts1639013593177 {
       foreignKeys: [{
         columnNames: ["buyHistoryId"],
         referencedColumnNames: ["id"],
-        referencedTableName: "buy_history"
+        referencedTableName: "buy_history",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
       }, {
         columnNames: ["productsId"],
         referencedColumnNames: ["id"],
-        referencedTableName: "products"
+        referencedTableName: "products",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE"
       }]
     }));
   }

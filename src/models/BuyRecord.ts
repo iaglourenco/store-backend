@@ -27,14 +27,12 @@ export default class BuyRecord {
   @Column()
   enviado: boolean;
 
-  @ManyToOne(() => User, (user) => user.buyRecords, {
-    cascade: true,
-  })
+  @ManyToOne(() => User, (user) => user.buyRecords)
   @JoinColumn({ name: "user_id" })
   user: User;
 
   @ManyToMany(() => Product, {
-    cascade: true,
+    eager: true,
   })
   @JoinTable()
   products: Product[];

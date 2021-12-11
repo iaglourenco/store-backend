@@ -21,12 +21,10 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", Number), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", Boolean), _dec12 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.buyRecords, {
-  cascade: true
-}), _dec13 = (0, _typeorm.JoinColumn)({
+let BuyRecord = (_dec = (0, _typeorm.Entity)("buy_history"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", Number), _dec8 = (0, _typeorm.Column)(), _dec9 = Reflect.metadata("design:type", String), _dec10 = (0, _typeorm.Column)(), _dec11 = Reflect.metadata("design:type", Boolean), _dec12 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.buyRecords), _dec13 = (0, _typeorm.JoinColumn)({
   name: "user_id"
 }), _dec14 = Reflect.metadata("design:type", typeof _User.default === "undefined" ? Object : _User.default), _dec15 = (0, _typeorm.ManyToMany)(() => _Product.default, {
-  cascade: true
+  eager: true
 }), _dec16 = (0, _typeorm.JoinTable)(), _dec17 = Reflect.metadata("design:type", Array), _dec(_class = (_class2 = class BuyRecord {
   constructor() {
     _initializerDefineProperty(this, "id", _descriptor, this);

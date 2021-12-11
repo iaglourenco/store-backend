@@ -16,7 +16,7 @@ routes.get("/users", authMiddleware, UsersController.index);
 routes.get("/users/:id", authMiddleware, UsersController.show);
 
 routes.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
+  res.json({ message: "TopicoStore API v1" });
 });
 routes.post("/products", upload.array("images"), ProductsController.create);
 routes.get("/products", ProductsController.index);

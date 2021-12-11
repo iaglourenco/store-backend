@@ -7,35 +7,35 @@ import * as Yup from "yup";
 export default {
   async index(req: Request, res: Response) {
     const usersRepository = getRepository(User);
-    const users = await usersRepository.find();
-    // return res.json(usersView.renderMany(users));
-    return res.json(users);
+    const users = await usersRepository.find({
+      relations: ["reviews"],
+    });
+    return res.json(usersView.renderMany(users));
   },
 
   async show(req: Request, res: Response) {
     const { id } = req.params;
     const usersRepository = getRepository(User);
     const user = await usersRepository.findOneOrFail(id, {
-      relations: ["products"],
+      relations: ["reviews"],
     });
     return res.json(usersView.render(user));
   },
 
   async create(req: Request, res: Response) {
-    const { first_name, last_name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     const usersRepository = getRepository(User);
 
     const data = {
-      first_name,
-      last_name,
+      name,
       email,
       password,
+      isAdmin: false,
     };
 
     const schema = Yup.object().shape({
-      first_name: Yup.string().required(),
-      last_name: Yup.string().required(),
+      name: Yup.string().required(),
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6),
     });
@@ -45,5 +45,12 @@ export default {
 
     await usersRepository.save(user);
     return res.status(201).json(user);
+  },
+
+  async remove(req: Request, res: Response) {
+    const { id } = req.params;
+    const usersRepository = getRepository(User);
+    const user = await usersRepository.findOneOrFail(id);
+    await usersRepository.remove(user);
   },
 };

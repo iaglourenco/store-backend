@@ -31,15 +31,15 @@ class createUsers1637593646398 {
         type: "varchar",
         isNullable: false
       }, {
-        name: "first_name",
+        name: "name",
         type: "varchar"
+      }, {
+        name: "isAdmin",
+        type: "boolean"
       }, {
         name: "image",
         type: "varchar",
         isNullable: true
-      }, {
-        name: "last_name",
-        type: "varchar"
       }]
     }));
   }

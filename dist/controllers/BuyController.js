@@ -27,9 +27,7 @@ var _default = {
       user
     } = req.body;
     const buyHistoryRepository = (0, _typeorm.getRepository)(_BuyRecord.default);
-    const a = await buyHistoryRepository.find({
-      relations: ["products"]
-    });
+    const a = await buyHistoryRepository.find();
     return res.json(a);
   },
 
@@ -38,7 +36,6 @@ var _default = {
       user
     } = req.body;
     const products = req.body.products;
-    const productsRepository = (0, _typeorm.getRepository)(_Product.default);
     const buyHistoryRepository = (0, _typeorm.getRepository)(_BuyRecord.default);
     const orderData = {
       user,

@@ -19,7 +19,8 @@ var _default = {
       category: product.category,
       brand: product.brand,
       stock: product.stock,
-      reviews: product.reviews,
+      numReviews: product.reviews ? product.reviews.length : 0,
+      rating: product.reviews ? product.reviews.reduce((acc, review) => acc + review.stars, 0) / product.reviews.length : -1,
       images: _images_view.default.renderMany(product.images)
     };
   },

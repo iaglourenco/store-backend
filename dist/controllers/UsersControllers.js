@@ -22,9 +22,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   async index(req, res) {
     const usersRepository = (0, _typeorm.getRepository)(_User.default);
-    const users = await usersRepository.find(); // return res.json(usersView.renderMany(users));
-
-    return res.json(users);
+    const users = await usersRepository.find({
+      relations: ["reviews"]
+    });
+    return res.json(_users_view.default.renderMany(users));
   },
 
   async show(req, res) {
@@ -33,28 +34,26 @@ var _default = {
     } = req.params;
     const usersRepository = (0, _typeorm.getRepository)(_User.default);
     const user = await usersRepository.findOneOrFail(id, {
-      relations: ["products"]
+      relations: ["reviews"]
     });
     return res.json(_users_view.default.render(user));
   },
 
   async create(req, res) {
     const {
-      first_name,
-      last_name,
+      name,
       email,
       password
     } = req.body;
     const usersRepository = (0, _typeorm.getRepository)(_User.default);
     const data = {
-      first_name,
-      last_name,
+      name,
       email,
-      password
+      password,
+      isAdmin: false
     };
     const schema = Yup.object().shape({
-      first_name: Yup.string().required(),
-      last_name: Yup.string().required(),
+      name: Yup.string().required(),
       email: Yup.string().email().required(),
       password: Yup.string().required().min(6)
     });
@@ -64,6 +63,15 @@ var _default = {
     const user = usersRepository.create(data);
     await usersRepository.save(user);
     return res.status(201).json(user);
+  },
+
+  async remove(req, res) {
+    const {
+      id
+    } = req.params;
+    const usersRepository = (0, _typeorm.getRepository)(_User.default);
+    const user = await usersRepository.findOneOrFail(id);
+    await usersRepository.remove(user);
   }
 
 };

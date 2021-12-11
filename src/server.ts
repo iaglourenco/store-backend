@@ -5,6 +5,7 @@ import routes from "./routes";
 import path from "path";
 import errorHandler from "./errors/handler";
 const app = express();
+require("dotenv").config();
 
 app.use(express.json());
 app.use(routes);

@@ -21,13 +21,9 @@ function _applyDecoratedDescriptor(target, property, decorators, descriptor, con
 
 function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
 
-let Review = (_dec = (0, _typeorm.Entity)("reviews"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.reviews, {
-  cascade: true
-}), _dec9 = (0, _typeorm.JoinColumn)({
+let Review = (_dec = (0, _typeorm.Entity)("reviews"), _dec2 = (0, _typeorm.PrimaryGeneratedColumn)("increment"), _dec3 = Reflect.metadata("design:type", Number), _dec4 = (0, _typeorm.Column)(), _dec5 = Reflect.metadata("design:type", Number), _dec6 = (0, _typeorm.Column)(), _dec7 = Reflect.metadata("design:type", String), _dec8 = (0, _typeorm.ManyToOne)(() => _User.default, user => user.reviews), _dec9 = (0, _typeorm.JoinColumn)({
   name: "user_id"
-}), _dec10 = Reflect.metadata("design:type", typeof _User.default === "undefined" ? Object : _User.default), _dec11 = (0, _typeorm.ManyToOne)(() => _Product.default, product => product.reviews, {
-  cascade: true
-}), _dec12 = (0, _typeorm.JoinColumn)({
+}), _dec10 = Reflect.metadata("design:type", typeof _User.default === "undefined" ? Object : _User.default), _dec11 = (0, _typeorm.ManyToOne)(() => _Product.default, product => product.reviews), _dec12 = (0, _typeorm.JoinColumn)({
   name: "product_id"
 }), _dec13 = Reflect.metadata("design:type", typeof _Product.default === "undefined" ? Object : _Product.default), _dec(_class = (_class2 = class Review {
   constructor() {

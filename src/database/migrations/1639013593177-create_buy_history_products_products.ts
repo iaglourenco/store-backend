@@ -22,11 +22,15 @@ export class createBuyHistoryProductsProducts1639013593177
             columnNames: ["buyHistoryId"],
             referencedColumnNames: ["id"],
             referencedTableName: "buy_history",
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
           },
           {
             columnNames: ["productsId"],
             referencedColumnNames: ["id"],
             referencedTableName: "products",
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
           },
         ],
       })

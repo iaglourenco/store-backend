@@ -26,6 +26,10 @@ export default {
     const orderData = {
       user,
       products,
+      shipAddress,
+      shipmentPrice,
+      paymentMethod,
+      taxPrice,
     };
 
     const schema = Yup.object().shape({
@@ -36,6 +40,10 @@ export default {
           amount: Yup.number().required(),
         })
       ).required(),
+      shipAddress: Yup.string().required(),
+      shipmentPrice: Yup.number().required(),
+      paymentMethod: Yup.string().required(),
+      taxPrice: Yup.number().required(),
     });
 
     await schema.validate(orderData, { abortEarly: false });
@@ -64,6 +72,7 @@ export default {
       status: "PENDING",
       enviado: false,
       shipAddress,
+      taxPrice,
       paymentMethod,
       shipmentPrice,
       user,

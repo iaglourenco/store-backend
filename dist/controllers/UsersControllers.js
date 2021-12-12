@@ -27,7 +27,7 @@ var _default = {
     const users = await usersRepository.find({
       relations: ["reviews"]
     });
-    return res.json(_users_view.default.renderMany(users));
+    return res.status(200).json(_users_view.default.renderMany(users));
   },
 
   async show(req, res) {
@@ -38,7 +38,7 @@ var _default = {
     const user = await usersRepository.findOneOrFail(id, {
       relations: ["reviews"]
     });
-    return res.json(_users_view.default.render(user));
+    return res.status(200).json(_users_view.default.render(user));
   },
 
   async create(req, res) {
@@ -64,7 +64,7 @@ var _default = {
     });
     const user = usersRepository.create(data);
     await usersRepository.save(user);
-    return res.status(201).json(user);
+    return res.status(201).json(_users_view.default.render(user));
   },
 
   async remove(req, res) {
@@ -75,7 +75,7 @@ var _default = {
     const user = await usersRepository.findOneOrFail(id);
     await usersRepository.remove(user);
 
-    _express.response.status(204).json(user);
+    _express.response.status(200).json(user);
   }
 
 };

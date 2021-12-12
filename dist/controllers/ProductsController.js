@@ -106,6 +106,36 @@ var _default = {
       brand,
       stock
     } = req.body;
+    const requestImgs = req.files;
+    const images = requestImgs.map(img => {
+      return {
+        path: img.filename
+      };
+    });
+    const data = {
+      name,
+      description,
+      price,
+      images,
+      brand,
+      stock,
+      category
+    };
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      description: Yup.string().required().max(255),
+      price: Yup.number().required(),
+      images: Yup.array(Yup.object().shape({
+        path: Yup.string().required()
+      })).required(),
+      brand: Yup.string().required(),
+      stock: Yup.number().required(),
+      category: Yup.string().required(),
+      user: Yup.string().required()
+    });
+    await schema.validate(data, {
+      abortEarly: false
+    });
     const productsRepository = (0, _typeorm.getRepository)(_Product.default);
     const product = await productsRepository.findOneOrFail(id);
     product.name = name;

@@ -8,7 +8,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _typeorm.createConnection)({
   type: "sqlite",
-  database: _path.default.join(__dirname + "/database.sqlite"),
+  database: "./database.sqlite",
   migrations: [_path.default.join(__dirname + "/migrations/*")],
   entities: [_path.default.join(__dirname + "/../models/*")],
   cli: {

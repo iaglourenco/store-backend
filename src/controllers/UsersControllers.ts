@@ -10,7 +10,7 @@ export default {
     const users = await usersRepository.find({
       relations: ["reviews"],
     });
-    return res.json(usersView.renderMany(users));
+    return res.status(200).json(usersView.renderMany(users));
   },
 
   async show(req: Request, res: Response) {
@@ -19,7 +19,7 @@ export default {
     const user = await usersRepository.findOneOrFail(id, {
       relations: ["reviews"],
     });
-    return res.json(usersView.render(user));
+    return res.status(200).json(usersView.render(user));
   },
 
   async create(req: Request, res: Response) {
@@ -44,7 +44,7 @@ export default {
     const user = usersRepository.create(data);
 
     await usersRepository.save(user);
-    return res.status(201).json(user);
+    return res.status(201).json(usersView.render(user));
   },
 
   async remove(req: Request, res: Response) {
@@ -53,6 +53,6 @@ export default {
     const user = await usersRepository.findOneOrFail(id);
     await usersRepository.remove(user);
 
-    response.status(204).json(user);
+    response.status(200).json(user);
   },
 };

@@ -3,7 +3,7 @@ import path from "path";
 
 createConnection({
   type: "sqlite",
-  database: path.join(__dirname + "/database.sqlite"),
+  database: "./database.sqlite",
   migrations: [path.join(__dirname + "/migrations/*")],
   entities: [path.join(__dirname + "/../models/*")],
   cli: {

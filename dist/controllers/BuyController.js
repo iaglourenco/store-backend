@@ -45,14 +45,22 @@ var _default = {
     const buyHistoryRepository = (0, _typeorm.getRepository)(_BuyRecord.default);
     const orderData = {
       user,
-      products
+      products,
+      shipAddress,
+      shipmentPrice,
+      paymentMethod,
+      taxPrice
     };
     const schema = Yup.object().shape({
       user: Yup.string().required(),
       products: Yup.array(Yup.object().shape({
         product_id: Yup.number().required(),
         amount: Yup.number().required()
-      })).required()
+      })).required(),
+      shipAddress: Yup.string().required(),
+      shipmentPrice: Yup.number().required(),
+      paymentMethod: Yup.string().required(),
+      taxPrice: Yup.number().required()
     });
     await schema.validate(orderData, {
       abortEarly: false
@@ -75,6 +83,7 @@ var _default = {
       status: "PENDING",
       enviado: false,
       shipAddress,
+      taxPrice,
       paymentMethod,
       shipmentPrice,
       user,

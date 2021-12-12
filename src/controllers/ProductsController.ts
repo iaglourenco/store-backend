@@ -79,6 +79,37 @@ export default {
     const { id } = req.params;
     const { name, description, price, category, brand, stock } = req.body;
 
+    const requestImgs = req.files as Express.Multer.File[];
+    const images = requestImgs.map((img) => {
+      return { path: img.filename };
+    });
+
+    const data = {
+      name,
+      description,
+      price,
+      images,
+      brand,
+      stock,
+      category,
+    };
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      description: Yup.string().required().max(255),
+      price: Yup.number().required(),
+      images: Yup.array(
+        Yup.object().shape({
+          path: Yup.string().required(),
+        })
+      ).required(),
+      brand: Yup.string().required(),
+      stock: Yup.number().required(),
+      category: Yup.string().required(),
+      user: Yup.string().required(),
+    });
+    await schema.validate(data, { abortEarly: false });
+
     const productsRepository = getRepository(Product);
     const product = await productsRepository.findOneOrFail(id);
 
